@@ -6,8 +6,10 @@ using namespace cv;
 
 int main()
 {
-  Mat img1 = imread("image1.jpg", IMREAD_GRAYSCALE);
-  Mat img2 = imread("image2.jpg", IMREAD_GRAYSCALE);
+  string application_path = "/app";
+  Mat img1 = imread(application_path + "/image1.jpg", IMREAD_GRAYSCALE);
+  Mat img2 = imread(application_path + "/image2.jpg", IMREAD_GRAYSCALE);
+  string output_path = application_path + "/output/cpp_output.jpg";
 
   if (img1.empty() || img2.empty()){
     cerr << "Cannot read image file." << endl;
@@ -23,9 +25,9 @@ int main()
   threshold(diff, thresh, 10, 255, THRESH_BINARY);
 
   // 差分画像を保存
-  imwrite("output.jpg", thresh);
+  imwrite(output_path, thresh);
 
-  cout << "Image processing is successfully done. Output image is saved as 'output.jpg'." << endl;
+  cout << "Image processing is successfully done. Output image is saved as " << output_path << "." << endl;
 
   return 0;
 }
