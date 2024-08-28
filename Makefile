@@ -2,8 +2,8 @@
 CONTAINER_NAME=air_hockey_container
 
 # Dockerイメージ名
-# IMAGE_NAME=murakawatakuya/air_hockey:latest # imageをpullした場合
-IMAGE_NAME=air_hockey # imageをbuildした場合
+IMAGE_NAME=murakawatakuya/air_hockey:latest # imageをpullした場合
+# IMAGE_NAME=air_hockey # imageをbuildした場合
 
 # ディレクトリ
 APP_DIR=app
