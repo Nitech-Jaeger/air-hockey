@@ -9,8 +9,8 @@ img1 = cv2.imread(img1_path, cv2.IMREAD_GRAYSCALE)
 img2 = cv2.imread(img2_path, cv2.IMREAD_GRAYSCALE)
 
 if img1 is None or img2 is None:
-  print("Cannot read image file.")
-  exit()
+    print("Cannot read image file.")
+    exit()
 
 # 差分画像を計算
 diff = cv2.absdiff(img1, img2)
