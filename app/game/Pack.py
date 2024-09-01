@@ -22,7 +22,7 @@ class Pack(Entity):
         
         return 
 
-    # ２次元空間における二つの座標からその２点を結んだ直線に対する法線ベクトルを求める
+    # ２次元空間における二つの座標からその２点を結んだ直線に対する法線ベクトルを計算
     def __culc_normal_vec(pos1,pos2):
         n_x = pos1[0]-pos2[0]
         n_y = pos1[1]-pos2[1]
@@ -30,10 +30,11 @@ class Pack(Entity):
         normal_vec = (n_x/scale_n,n_y/scale_n)
         return normal_vec
 
-    # タプル形式で表される２次元ベクトルからない席を計算
+    # タプル形式で表される２次元ベクトルから内積を計算
     def __culc_inner_product(vec1,vec2):
         return vec1[0]*vec2[0]+vec1[1]*vec2[1]
     
+    # packとplayerの完全弾性衝突による衝突後の速度を計算
     def __elastic_collsion(self,player_speed,player_position):
         pack_position = (self._xposition,self._yposition)
         pack_speed = (self._xspeed,self._yspeed)
@@ -51,6 +52,7 @@ class Pack(Entity):
 
         return (V_pack_x,V_pack_y)
 
+    # プレイヤーと衝突したときの処理
     def hit_player(self,player_speed,player_position):
         speed_after_hit = self.__elastic_collsion(player_speed,player_position)
         self._xspeed = speed_after_hit[0]
