@@ -18,6 +18,6 @@ class Entity(ABC):
         return (self._SIZE)
     
     @abstractmethod
-    def move():
+    def move(self):
         pass
         
