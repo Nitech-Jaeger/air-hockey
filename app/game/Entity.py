@@ -11,6 +11,10 @@ class Entity(ABC):
     def get_position(self):
         return (self._xposition,self._yposition)
     
+    def set_position(self,position):
+        self._xposition = position[0]
+        self._yposition = position[1]
+    
     def get_speed(self):
         return (self._xspeed,self._yspeed)
     
