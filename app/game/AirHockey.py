@@ -10,3 +10,8 @@ class AirHockey:
         self._goal_size = goal_size
         self._goal_position = goal_position
         self._finish_point = finish_point
+
+    def end_of_game(self):
+        for player in self._players:
+            if (player.get_point() == self._finish_point):
+                finish_game()
