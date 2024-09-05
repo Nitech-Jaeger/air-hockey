@@ -14,8 +14,9 @@ class AirHockey:
         self._finish_point = finish_point
         self.__server =True
 
-
+    # ゲーム開始時に伴う初期化処理
     def start_game(self):
+        # パックの初期化
         PACKSIZE =20
         xposition=self._width/2
         yposition = self._height/2
@@ -27,6 +28,7 @@ class AirHockey:
         pack = Pack(PACKSIZE,xposition,yposition,0,0)
         self._pack.append(pack)
 
+        # プレイヤーの初期化
         PLAYER_SIZE = 20
         CENTER_LINE = self._width/2
         players_position_list = image_process()
