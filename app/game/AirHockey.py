@@ -64,19 +64,19 @@ class AirHockey:
             a = 0
             b = 1
             c = -1 * pos1[1]
-            return a,b,c
+            return a, b, c
         elif pos1[0] == pos2[0]:
             a = 1
             b = 0
             c = -1 * pos1[0]
-            return a,b,c
+            return a, b, c
         a = -1 * (pos1[1] - pos2[1])
         b = pos1[0] - pos2[0]
         c =-1 * (a * pos1[0] + b *pos1[1])
         return a, b, c
 
     #ax+by+c=0と(x-cx)^2+(y-cy)^2=r^2の二つの交点の座標を返す 
-    def __culc_intersection_of_circle_and_linear(a,b,c,cx,cy,r):
+    def __culc_intersection_of_circle_and_linear(a, b, c, cx, cy, r):
         if a == 0:
             y = -1 * c / b
             x1 = cx + math.sqrt(r ** 2 - (y - cy) ** 2)
@@ -95,7 +95,7 @@ class AirHockey:
         return (x1, y1), (x2, y2)
     
     # タプル形式で表される２次元ベクトルから外積を計算
-    def __culc_outer_product(vec1,vec2):
+    def __culc_outer_product(vec1, vec2):
         return vec1[0] * vec2[1] - vec1[1] * vec2[0]
 
         
@@ -139,7 +139,7 @@ class AirHockey:
 
     # 線分ABと線分CDの考査判定をベクトルの外積を利用して行い、真理値を返す
     # a,b,c,dはそれぞれタプル形式で現れる線分の端点の座標
-    def __check_cross_of_two_linear(self,a,b,c,d):
+    def __check_cross_of_two_linear(self, a, b, c, d):
         ab = (b[0] - a[0], b[1] - a[1])
         ac = (c[0] - a[0], c[1] - a[1])
         ad = (d[0] - a[0], d[1] - a[1])
@@ -191,9 +191,8 @@ class AirHockey:
 
         for i in range(4):
             # 壁と衝突するかの判定
-            if self.__check_cross_of_two_linear(pack_position,moved_pack_position,FIELD_POINT[i],FIELD_POINT[(i + 1) % 4]):
-                # 壁と衝突したときの位置の修正
-                (a, b, c) =self.__culc_linear_function(pack_position,moved_pack_position)
+            if self.__check_cross_of_two_linear(pack_position, moved_pack_position, FIELD_POINT[i], FIELD_POINT[(i + 1) % 4]):
+                (a, b, c) =self.__culc_linear_function(pack_position, moved_pack_position)
                 if FIELD_POINT[i][0] == FIELD_POINT[(i + 1) % 4][0]:
                     if b == 0 :
                         continue
