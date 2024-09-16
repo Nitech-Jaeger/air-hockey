@@ -188,10 +188,12 @@ class AirHockey:
         FIELD_POINT = [(pack_size, pack_size), (self._width - pack_size, pack_size), (self._width - pack_size, self._height - pack_size), (pack_size, self._height - pack_size)]
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
         position_after_hit = pack_position
+        hit_flag = False
 
         for i in range(4):
             # 壁と衝突するかの判定
             if self.__check_cross_of_two_linear(pack_position, moved_pack_position, FIELD_POINT[i], FIELD_POINT[(i + 1) % 4]):
+                hit_flag = True
                 (a, b, c) =self.__culc_linear_function(pack_position, moved_pack_position)
                 if FIELD_POINT[i][0] == FIELD_POINT[(i + 1) % 4][0]:
                     if b == 0 :
@@ -211,18 +213,27 @@ class AirHockey:
                     else :
                         position_after_hit[0] = -1 * (b * position_after_hit[1] + c) / a
                     pack.refrect(True)
+        return hit_flag
 
 
     #パックと壁もしくはプレイヤーとの衝突処理を行う。
-    def process_hit(self):
+    def process_hit_and_move(self):
         for pack in self._pack:
+            flag = False
             for player in self._players:
                 # パックとプレイヤーの衝突処理
                 if self.__process_hit_with_player(pack, player):
-                    return
+                    break
+            if flag :
+                continue
                 
             # パックと壁の衝突処理
-            self.__process_hit_with_wall(pack)
+            if self.__process_hit_with_wall(pack):
+                continue
+
+            pack.move()
+        
+        
             
 
 
