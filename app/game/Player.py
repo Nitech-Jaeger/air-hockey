@@ -1,7 +1,7 @@
 from Entity import Entity
 
 class Player(Entity):
-    def __init__(self, size, xposition, yposition, xspeed, yspeed,TEAM_ID):
+    def __init__(self, size, xposition, yposition, xspeed, yspeed, TEAM_ID, HAND_ID):
         super().__init__(size, xposition, yposition, xspeed, yspeed)
         self.__point = 0
         self.__TEAM_ID = TEAM_ID
