@@ -45,14 +45,14 @@ class AirHockey:
         return
     
     # タプルの形で渡された２点間の距離を返す
-    def __culc_distance_of_two_points(pos1, pos2):
+    def __culc_distance_of_two_points(self, pos1, pos2):
         dis = (pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2
         dis = math.sqrt(dis)
         return dis
     
     # 点と直線の距離を返す。
     # 直線はax+by+c=0の形で渡され、点はタプルで渡される。
-    def __culc_distance_of_line_and_point(a, b, c, point):
+    def __culc_distance_of_line_and_point(self, a, b, c, point):
         temp = a * point[0] + b * point[1] + c 
         if temp < 0 :
             temp *= -1
@@ -76,7 +76,7 @@ class AirHockey:
         return a, b, c
 
     #ax+by+c=0と(x-cx)^2+(y-cy)^2=r^2の二つの交点の座標を返す 
-    def __culc_intersection_of_circle_and_linear(a, b, c, cx, cy, r):
+    def __culc_intersection_of_circle_and_linear(self, a, b, c, cx, cy, r):
         if a == 0:
             y = -1 * c / b
             x1 = cx + math.sqrt(r ** 2 - (y - cy) ** 2)
@@ -95,7 +95,7 @@ class AirHockey:
         return (x1, y1), (x2, y2)
     
     # タプル形式で表される２次元ベクトルから外積を計算
-    def __culc_outer_product(vec1, vec2):
+    def __culc_outer_product(self, vec1, vec2):
         return vec1[0] * vec2[1] - vec1[1] * vec2[0]
 
         

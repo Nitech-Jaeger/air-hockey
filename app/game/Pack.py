@@ -23,7 +23,7 @@ class Pack(Entity):
         return 
 
     # ２次元空間における二つの座標からその２点を結んだ直線に対する法線ベクトルを計算
-    def __culc_normal_vec(pos1, pos2):
+    def __culc_normal_vec(self, pos1, pos2):
         n_x = pos1[0] - pos2[0]
         n_y = pos1[1] - pos2[1]
         scale_n = (n_x * n_x + n_y * n_y)
@@ -31,7 +31,7 @@ class Pack(Entity):
         return normal_vec
 
     # タプル形式で表される２次元ベクトルから内積を計算
-    def __culc_inner_product(vec1, vec2):
+    def __culc_inner_product(self, vec1, vec2):
         return vec1[0] * vec2[0] + vec1[1] * vec2[1]
     
     # packとplayerの完全弾性衝突による衝突後の速度を計算
