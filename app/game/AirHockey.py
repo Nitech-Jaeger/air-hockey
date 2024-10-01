@@ -59,7 +59,7 @@ class AirHockey:
         return temp / math.sqrt( a ** 2 + b ** 2)
     
     # タプルの形式で渡される２点を通る直線の式をax+by+c=0の形で求める。
-    def __culc_linear_function(pos1, pos2):
+    def __culc_linear_function(self, pos1, pos2):
         if pos1[1] == pos2[1]:
             a = 0
             b = 1
@@ -107,6 +107,7 @@ class AirHockey:
         (a, b, c) = self.__culc_linear_function(pack_position, moved_pack_position)
         NESS_DIS = pack_size + player_size
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
+        (a, b, c) = self.__culc_linear_function(pack_position, moved_pack_position)
 
         dis = self.__culc_distance_of_line_and_point(a, b, c, player_position)
         border1 = -b * pack_position[0] + a * pack_position[1] 
