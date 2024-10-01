@@ -8,19 +8,19 @@ class AirHockey:
     def __init__(self, pack, players, width, height, goal_size, goal_position, finish_point):
         self._packs = []
         self._players = []
-        self._width = width
-        self._height = height
-        self._goal_size = goal_size
-        self._goal_position = goal_position
-        self._finish_point = finish_point
+        self._WIDTH = width
+        self._HEIGHT = height
+        self._GOAL_SIZE = goal_size
+        self._GOAL_POSITION = goal_position
+        self._FINISH_POINT = finish_point
         self.__server =True
 
     # ゲーム開始時に伴う初期化処理
     def start_game(self):
         # パックの初期化
         PACKSIZE = 20
-        xposition = self._width / 2
-        yposition = self._height / 2
+        xposition = self._WIDTH / 2
+        yposition = self._HEIGHT / 2
         if self.__server:
             xposition -= xposition / 2
         else :
@@ -31,7 +31,7 @@ class AirHockey:
 
         # プレイヤーの初期化
         PLAYER_SIZE = 20
-        CENTER_LINE = self._width / 2
+        CENTER_LINE = self._WIDTH / 2
         players_position_list = image_process()
         for player_position in players_position_list:
             HAND_ID = player_position[0]
