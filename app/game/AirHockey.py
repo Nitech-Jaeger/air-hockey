@@ -6,7 +6,7 @@ import math
 
 class AirHockey:
     def __init__(self, pack, players, width, height, goal_size, goal_position, finish_point):
-        self._pack = []
+        self._packs = []
         self._players = []
         self._width = width
         self._height = height
@@ -27,7 +27,7 @@ class AirHockey:
             xposition += xposition / 2
         self.__server = not self.__server
         pack = Pack(PACKSIZE, xposition, yposition, 0, 0)
-        self._pack.append(pack)
+        self._packs.append(pack)
 
         # プレイヤーの初期化
         PLAYER_SIZE = 20
@@ -218,7 +218,7 @@ class AirHockey:
 
     #パックと壁もしくはプレイヤーとの衝突処理を行う。
     def process_hit_and_move(self):
-        for pack in self._pack:
+        for pack in self._packs:
             flag = False
             for player in self._players:
                 # パックとプレイヤーの衝突処理
