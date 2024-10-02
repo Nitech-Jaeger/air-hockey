@@ -8,7 +8,11 @@ class Entity(ABC):
         self._yposition = yposition
         self._xspeed = xspeed
         self._yspeed = yspeed
+<<<<<<< HEAD
         self.__ID = random.randint(1, 1e9)
+=======
+        self.__ID = random.randint(1,1e9)
+>>>>>>> d63a9790f5eea94d07d047dcf03d622c89a566eb
     
     def get_position(self):
         return (self._xposition,self._yposition)
