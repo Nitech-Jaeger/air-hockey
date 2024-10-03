@@ -1,6 +1,6 @@
-from Pack import Pack
-from Player import Player
-from .. import image_process
+from .Pack import Pack
+from .Player import Player
+from ..image_process import image_process
 import math
 
 
