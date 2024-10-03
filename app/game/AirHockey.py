@@ -241,13 +241,13 @@ class AirHockey:
             ID = pack.get_id()
             position = pack.get_position()
             size = pack.get_size()
-            rel.append((id,position,size))
+            rel.append((ID,position,size))
         
         for player in self._players:
             ID = player.get_id()
             position = player.get_position()
             size = player.get_size()
-            rel.append((id,position,size))
+            rel.append((ID,position,size))
         
         return rel
 
