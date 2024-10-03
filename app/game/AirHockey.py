@@ -205,7 +205,7 @@ class AirHockey:
                     else:
                         position_after_hit[1] = -1 * (a * FIELD_POINT[i][0] + c) / b
                     pack.refrect(False)
-                elif FIELD_POINT[i][0] == FIELD_POINT[(i + 1) % 4][0]:
+                elif FIELD_POINT[i][1] == FIELD_POINT[(i + 1) % 4][1]:
                     if a == 0:
                         continue
                     position_after_hit[1] = FIELD_POINT[i][1]
