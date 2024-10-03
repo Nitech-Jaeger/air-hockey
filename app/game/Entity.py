@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+from abc import ABC,abstractmethod
+import random
 
 class Entity(ABC):
     def __init__(self, size, xposition, yposition, xspeed, yspeed):
@@ -7,6 +8,7 @@ class Entity(ABC):
         self._yposition = yposition
         self._xspeed = xspeed
         self._yspeed = yspeed
+        self.__ID = random.randint(1, 1e9)
     
     def get_position(self):
         return (self._xposition, self._yposition)
@@ -16,6 +18,9 @@ class Entity(ABC):
         self._yposition = position[1]
 
         return 
+    
+    def get_id(self):
+        return self.__ID
         
     
     def get_speed(self):
