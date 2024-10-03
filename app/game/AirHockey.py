@@ -6,47 +6,47 @@ import math
 
 class AirHockey:
     def __init__(self, pack, players, width, height, goal_size, goal_position, finish_point):
-        self._pack = []
+        self._packs = []
         self._players = []
-        self._width = width
-        self._height = height
-        self._goal_size = goal_size
-        self._goal_position = goal_position
-        self._finish_point = finish_point
+        self._WIDTH = width
+        self._HEIGHT = height
+        self._GOAL_SIZE = goal_size
+        self._GOAL_POSITION = goal_position
+        self._FINISH_POINT = finish_point
         self.__server =True
 
     # ゲーム開始時に伴う初期化処理
     def start_game(self):
         # パックの初期化
-        PACKSIZE =20
-        xposition=self._width/2
-        yposition = self._height/2
+        PACKSIZE = 20
+        xposition = self._WIDTH / 2
+        yposition = self._HEIGHT / 2
         if self.__server:
-            xposition -=xposition/2
+            xposition -= xposition / 2
         else :
-            xposition +=xposition/2
-        self.__server= not self.__server
-        pack = Pack(PACKSIZE,xposition,yposition,0,0)
-        self._pack.append(pack)
+            xposition += xposition / 2
+        self.__server = not self.__server
+        pack = Pack(PACKSIZE, xposition, yposition, 0, 0)
+        self._packs.append(pack)
 
         # プレイヤーの初期化
         PLAYER_SIZE = 20
-        CENTER_LINE = self._width/2
+        CENTER_LINE = self._WIDTH / 2
         players_position_list = image_process()
         for player_position in players_position_list:
             HAND_ID = player_position[0]
-            (xposition,yposition) = player_position[1]
+            (xposition, yposition) = player_position[1]
             TEAM_ID=0
-            if xposition>CENTER_LINE:
-                TEAM_ID=1
-            player = Player(PLAYER_SIZE,xposition,yposition,0,0,TEAM_ID,HAND_ID)
+            if xposition > CENTER_LINE:
+                TEAM_ID = 1
+            player = Player(PLAYER_SIZE, xposition, yposition, 0, 0, TEAM_ID, HAND_ID)
             self._players.append(player)
         
         return
     
     # タプルの形で渡された２点間の距離を返す
     def __culc_distance_of_two_points(pos1, pos2):
-        dis = (pos1[0] - pos2[0])**2 + (pos1[1] - pos2[1])**2
+        dis = (pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2
         dis = math.sqrt(dis)
         return dis
     
@@ -185,7 +185,7 @@ class AirHockey:
         pack_position = pack.get_position()
         pack_size = pack.get_size()
 
-        FIELD_POINT = [(pack_size, pack_size), (self._width - pack_size, pack_size), (self._width - pack_size, self._height - pack_size), (pack_size, self._height - pack_size)]
+        FIELD_POINT = [(pack_size, pack_size), (self._WIDTH - pack_size, pack_size), (self._WIDTH - pack_size, self._HEIGHT - pack_size), (pack_size, self._HEIGHT - pack_size)]
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
         position_after_hit = pack_position
         hit_flag = False
@@ -218,7 +218,7 @@ class AirHockey:
 
     #パックと壁もしくはプレイヤーとの衝突処理を行う。
     def process_hit_and_move(self):
-        for pack in self._pack:
+        for pack in self._packs:
             flag = False
             for player in self._players:
                 # パックとプレイヤーの衝突処理
