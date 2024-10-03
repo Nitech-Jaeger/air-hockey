@@ -1,6 +1,6 @@
 from .Pack import Pack
 from .Player import Player
-from ..image_process import image_process
+# from ..image_process import image_process
 import math
 
 
@@ -32,7 +32,8 @@ class AirHockey:
         # プレイヤーの初期化
         PLAYER_SIZE = 20
         CENTER_LINE = self._WIDTH / 2
-        players_position_list = image_process()
+        # players_position_list = image_process()
+        players_position_list = []
         for player_position in players_position_list:
             HAND_ID = player_position[0]
             (xposition, yposition) = player_position[1]
