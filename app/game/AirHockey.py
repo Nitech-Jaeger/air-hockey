@@ -234,7 +234,23 @@ class AirHockey:
 
             pack.move()
         
+    def get_entity_list(self):
+        rel = []
+
+        for pack in self._packs:
+            ID = pack.get_id()
+            position = pack.get_position()
+            size = pack.get_size()
+            rel.append((id,position,size))
         
+        for player in self._players:
+            ID = player.get_id()
+            position = player.get_position()
+            size = player.get_size()
+            rel.append((id,position,size))
+        
+        return rel
+
             
 
 
