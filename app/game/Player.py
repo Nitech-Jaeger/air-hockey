@@ -1,4 +1,4 @@
-from Entity import Entity
+from .Entity import Entity
 
 class Player(Entity):
     def __init__(self, size, xposition, yposition, xspeed, yspeed,TEAM_ID):
