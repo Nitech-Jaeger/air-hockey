@@ -15,6 +15,7 @@ class AirHockey:
         self._GOAL_POSITION = goal_position
         self._FINISH_POINT = finish_point
         self.__server =True
+        self.__hand_id_dict = {}
 
     # ゲーム開始時に伴う初期化処理
     def start_game(self):
@@ -41,7 +42,8 @@ class AirHockey:
             TEAM_ID=0
             if xposition > CENTER_LINE:
                 TEAM_ID = 1
-            player = Player(PLAYER_SIZE, xposition, yposition, 0, 0, TEAM_ID, HAND_ID)
+            player = Player(PLAYER_SIZE, xposition, yposition, 0, 0, TEAM_ID)
+            self.__hand_id_dict[HAND_ID] = player.get_id()
             self._players.append(player)
         
         return
