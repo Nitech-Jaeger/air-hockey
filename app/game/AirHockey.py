@@ -53,7 +53,7 @@ class AirHockey:
     # 返り値は修正後のパックの位置情報を格納したタプルで衝突しない場合は負の値が入ったものを返す。
     def __check_hit_with_player(self, pack_speed, pack_position, pack_size, player_position, player_size):
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
-        (a, b, c) = culc_linear_function(player_position, moved_pack_position)
+        (a, b, c) = culc_linear_function(pack_position, moved_pack_position)
         NESS_DIS = pack_size + player_size
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
 
