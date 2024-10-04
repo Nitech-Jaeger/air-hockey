@@ -54,4 +54,16 @@ def culc_intersection_of_circle_and_linear(a, b, c, cx, cy, r):
 def culc_outer_product(vec1, vec2):
     return vec1[0] * vec2[1] - vec1[1] * vec2[0]
 
+# ２次元空間における二つの座標からその２点を結んだ直線に対する法線ベクトルを計算
+def culc_normal_vec(pos1, pos2):
+    n_x = pos1[0] - pos2[0]
+    n_y = pos1[1] - pos2[1]
+    scale_n = (n_x * n_x + n_y * n_y)
+    normal_vec = (n_x / scale_n, n_y / scale_n)
+    return normal_vec
+
+# タプル形式で表される２次元ベクトルから内積を計算
+def culc_inner_product(vec1, vec2):
+    return vec1[0] * vec2[0] + vec1[1] * vec2[1]
+
     
