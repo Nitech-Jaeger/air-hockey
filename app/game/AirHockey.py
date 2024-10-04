@@ -61,7 +61,7 @@ class AirHockey:
 
         if dis <= NESS_DIS and (border1 - temp) * (border2 - temp) >= 0:
             # パックの位置の修正
-            (intersec1, intersec2) = culc_intersection_of_circle_and_linear
+            (intersec1, intersec2) = culc_intersection_of_circle_and_linear(a, b, c, player_position[0], player_position[1] ,player_size)
             dis1 = culc_distance_of_two_points(pack_position, intersec1)
             dis2 = culc_distance_of_two_points(pack_position, intersec2)
             if dis1 < dis2 :
