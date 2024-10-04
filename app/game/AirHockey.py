@@ -188,7 +188,7 @@ class AirHockey:
 
         FIELD_POINT = [(pack_size, pack_size), (self._WIDTH - pack_size, pack_size), (self._WIDTH - pack_size, self._HEIGHT - pack_size), (pack_size, self._HEIGHT - pack_size)]
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
-        position_after_hit = pack_position
+        position_after_hit = [pack_position[0], pack_position[1]]
         hit_flag = False
 
         for i in range(4):
