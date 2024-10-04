@@ -190,6 +190,8 @@ class AirHockey:
         moved_pack_position = (pack_position[0] + pack_speed[0], pack_position[1] + pack_speed[1])
         position_after_hit = [pack_position[0], pack_position[1]]
         hit_flag = False
+        
+        print(pack_speed)
 
         for i in range(4):
             # 壁と衝突するかの判定
@@ -197,18 +199,36 @@ class AirHockey:
                 hit_flag = True
                 (a, b, c) =self.__culc_linear_function(pack_position, moved_pack_position)
                 if FIELD_POINT[i][0] == FIELD_POINT[(i + 1) % 4][0]:
+                    pack.refrect(False)
                     if b == 0 :
                         continue
                     position_after_hit[0] = FIELD_POINT[i][0]
+
+                    if pack.get_speed()[0] < 0:
+                        position_after_hit[0] -= 1
+                    else :
+                        position_after_hit[0] += 1
+
                     if a == 0:
                         position_after_hit[1] = -1 * c / b
                     else:
                         position_after_hit[1] = -1 * (a * FIELD_POINT[i][0] + c) / b
-                    pack.refrect(False)
+
                 elif FIELD_POINT[i][1] == FIELD_POINT[(i + 1) % 4][1]:
+                    pack.refrect(True)      
+
                     if a == 0:
                         continue
                     position_after_hit[1] = FIELD_POINT[i][1]
+
+                    
+                    if pack.get_speed()[1] < 0:
+                        position_after_hit[1] -= 1
+                    else :
+                        position_after_hit[1] += 1
+                        
+                    
+                    
                     if b == 0:
                         position_after_hit[0] = -1 * c / a
                     else :
