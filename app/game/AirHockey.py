@@ -213,7 +213,9 @@ class AirHockey:
                         position_after_hit[0] = -1 * c / a
                     else :
                         position_after_hit[0] = -1 * (b * position_after_hit[1] + c) / a
-                    pack.refrect(True)
+                
+                pack.set_position(position_after_hit)
+                
         return hit_flag
 
 
