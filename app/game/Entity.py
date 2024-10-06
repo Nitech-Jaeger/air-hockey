@@ -26,6 +26,10 @@ class Entity(ABC):
     
     def get_speed(self):
         return (self._xspeed, self._yspeed)
+
+    def set_speed(self,speed):
+        self._xspeed = speed[0]
+        self._yspeed = speed[1]
     
     def get_size(self):
         return (self._SIZE)

@@ -11,6 +11,12 @@ class Player(Entity):
     
     def get_point(self):
         return self.__point
+
+    def set_point(self, point):
+        self.__point = point
+    
+    def plus_point(self,):
+        self.__point += 1
     
     def move(self, new_position):
         (new_x_position, new_y_position) = new_position

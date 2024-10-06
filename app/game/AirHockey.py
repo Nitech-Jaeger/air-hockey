@@ -234,7 +234,53 @@ class AirHockey:
             pack.move()
         
         
-            
+    #パックがゴールに入った際のパックの位置初期化用関数
+    def put_pack_to_start_position(self):
+        xposition = self._WIDTH / 2
+        yposition = self._HEIGHT / 2
+
+    #得点を取られた側にパックの初速をつける関数
+    def process_pack_to_start_speed(self,TEAM_ID):
+        #x,y方向にSTART_SPEEDで初速をつける。TEAM_IDによってx方向は変化する。
+        START_SPEED = 1
+        if(TEAM_ID == 0):
+            packs[0].set_speed([START_SPEED, START_SPEED])
+        if(TEAM_ID == 1):
+            packs[0].set_speed([START_SPEED, -(START_SPEED)])
+    
+
+    #得点をゲットした側のチームIDを返す関数。ゴールに入っていない場合、負の数を返す。
+    def check_goal_side(self):
+        if(self._GOAL_POSITION <= self.packs[0].get_position[1] and self.packs[0].get_position[1] <= (self._GOAL_POSITION + self._GOAL_SIZE)):
+            if(self.packs[0].get_position[0] == 0):
+                return 1
+
+            if(self.packs[0].get_position[0] == self._WIDTH):
+                return 0
+        return -1
+
+    def process_plus_point(self, TEAM_ID):
+        for player in self._players:
+            if (player.get_id() == TEAM_ID):
+                player.plus_point()
+                    
+
+    #ゲームが終了しているか確認する関数
+    def check_end_of_game(self):
+        for player in self._players:
+            if (player.get_point() >= self._FINISH_POINT):
+                finish_game()
+
+    #パックがゴールに入ったかどうか、入ったならば、点を入れ、パックを初期化するorゲームの終了を確認する関数
+    def process_goal(self):
+        if (check_goal_side() >= 0):
+            process_plus_point(check_goal_side())
+            check_end_of_game()
+            put_pack_to_start_position()
+            process_pack_to_start_speed(check_goal_side())
+
+
+        
 
 
 
