@@ -193,6 +193,7 @@ class AirHockey:
             for player in self._players:
                 # パックとプレイヤーの衝突処理
                 if self.__process_hit_with_player(pack, player):
+                    flag = True
                     break
             if flag :
                 continue
