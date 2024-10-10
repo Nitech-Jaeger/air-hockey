@@ -1,4 +1,6 @@
 import math
+import sympy as sp
+
 
 # タプルの形で渡された２点間の距離を返す
 def culc_distance_of_two_points(pos1, pos2):
@@ -33,22 +35,12 @@ def culc_linear_function(pos1, pos2):
 
 #ax+by+c=0と(x-cx)^2+(y-cy)^2=r^2の二つの交点の座標を返す 
 def culc_intersection_of_circle_and_linear(a, b, c, cx, cy, r):
-    if a == 0:
-        y = -1 * c / b
-        x1 = cx + math.sqrt(r ** 2 - (y - cy) ** 2)
-        x2 = cx - math.sqrt(r ** 2 - (y - cy) ** 2)
-        return (x1, y), (x2, y)
-    elif b == 0:
-        x = -1 * c / b
-        y1 = cy + math.sqrt(r ** 2 - (x - cx) ** 2)
-        y1 = cy - math.sqrt(r ** 2 - (x - cx) ** 2)
-        return (x, y1), (x, y2)
-    y1 = cy + math.sqrt(r ** 2 + (b / a + c / a + cx) ** 2)
-    y2 = cy - math.sqrt(r ** 2 + (b / a + c / a + cx) ** 2)
-    
-    x1 = -1 * (b * y1 + c) / a
-    x2 = -1 * (b * y2 + c) / a
-    return (x1, y1), (x2, y2)
+    x, y = sp.symbols('x y')
+    circle_eq = (x - cx) ** 2 + (y - cy)**2 - r **2
+    line_eq = a * x + b * y + c
+    solutions = sp.solve([circle_eq,line_eq],(x, y))
+
+    return solutions[0], solutions[1]
 
 # タプル形式で表される２次元ベクトルから外積を計算
 def culc_outer_product(vec1, vec2):
